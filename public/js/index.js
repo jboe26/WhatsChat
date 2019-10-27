@@ -1,6 +1,6 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+// var $exampleText = $("#example-text");
+// var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
@@ -61,26 +61,26 @@ var refreshExamples = function() {
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
+// var handleFormSubmit = function(event) {
+//   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
+//   // var example = {
+//   //   text: $exampleText.val().trim(),
+//   //   description: $exampleDescription.val().trim()
+//   // };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+//   // if (!(example.text && example.description)) {
+//   //   alert("You must enter an example text and description!");
+//   //   return;
+//   // }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
+//   API.saveExample(example).then(function() {
+//     refreshExamples();
+//   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
+//   // $exampleText.val("");
+//   // $exampleDescription.val("");
+// };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
@@ -95,5 +95,14 @@ var handleDeleteBtnClick = function() {
 };
 
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
+$submitBtn.on("click", function(event) {
+  event.preventDefault();
+
+  return $.ajax({
+    url: "/login",
+    type: "GET"
+  }).then(function() {
+    console.log("This is login page");
+  });
+});
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
