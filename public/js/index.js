@@ -101,7 +101,7 @@ $submitBtn.on("click", function(event) {
   return $.ajax({
     url: "/login",
     type: "GET"
-  }).then(function(){
+  }).then(function() {
     console.log("This is login page");
   });
 });
