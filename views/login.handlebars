@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://use.fontawesome.com/releases/v5.10.2/js/all.js" data-auto-replace-svg="nest"></script>
+    <title>WhatsChat</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="card mt-4">
+                    <div class="card-body" id="form">
+                        <h4>Welcome to WhatsChat!</h4>
+                        <h5 class="card-title">Login or Sign-Up to start chatting today!</h5>
+                        <form action="action_page.php" method="post" >
+
+                            <label for="name"><b>Name:</b></label>
+                            <input type="name" placeholder="Enter Name" name="name" required>
+                            <br>
+                            <label for="psw"><b>Password:</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" required>
+                            <br>
+                            <label for="email"><b>Email:</b></label>
+                            <input type="email" placeholder="Enter Email" name="email" required>
+                            <br>
+                            <button type="submit"><i class="fa fa-sign-in-alt"></i>  Login</button>
+                            <button type="submit">Sign Up</button>
+
+
+                            <button type="button" class="cancelbtn">Cancel</button><br>
+                            <a href="#"><span class="psw"><i class="fas fa-lock"></i>  Forgot password?</span></a>
+
+                        </form>
+                        <a href="/"><i class="fas fa-home"></i>  Back To Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
