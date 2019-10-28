@@ -3,14 +3,16 @@
     width: 1400px;
 }
 
-.container {
+.container, body {
     background-color: #016FB9;
     text-align  : center;
 }
 
-#form {
+#form{
     background-color: #004777;
     color: white;
+    height: 750px;
+    
 }
 
 .chan-link {
