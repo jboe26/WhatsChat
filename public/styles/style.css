@@ -1,0 +1,46 @@
+.main-menu {
+    background-color: #016FB9;
+    width: 1400px;
+}
+
+.container {
+    background-color: #016FB9;
+    text-align  : center;
+}
+
+#form {
+    background-color: #004777;
+    color: white;
+}
+
+.chan-link {
+    background: #004777; 
+    display: inline-block; 
+    border: none;
+}
+
+.footer {
+    height: 30px;
+    width: 222px;
+    text-align: center;
+}
+
+.side-bar {
+    background: #016FB9;
+    height: 690px;
+    width: 240px;
+}
+
+.main {
+    margin-left: 550px;
+    height: 300px;
+}
+
+.main-title {
+    text-align: center;
+}
+
+.title-buttons {
+    margin-top: 100px;
+
+}
