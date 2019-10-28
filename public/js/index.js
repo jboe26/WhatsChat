@@ -3,6 +3,57 @@
 // var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var $signUp = $("#createuser");
+var $logIn = $("#loginuser");
+
+//signup API
+
+$signUp.on("submit", function(event) {
+  event.preventDefault();
+
+  var newUser = {
+    userName: $("#createuser [name=name]")
+      .val()
+      .trim(),
+    password: $("#createuser [name=psw]")
+      .val()
+      .trim(),
+    email: $("#createuser [name=email]")
+      .val()
+      .trim()
+  };
+
+  $.ajax("/api/user", {
+    type: "POST",
+    data: newUser
+  }).then(function() {
+    alert("created new user");
+    // Reload the page to get the updated list
+    location.reload();
+  });
+});
+
+//login API
+
+$logIn.on("submit", function(event) {
+  event.preventDefault();
+  var User = {
+    userName: $("#loginuser [name=name]")
+      .val()
+      .trim(),
+    password: $("#loginuser [name=psw]")
+      .val()
+      .trim()
+  };
+  $.ajax("/api/user1", {
+    type: "POST",
+    data: User
+  }).then(function() {
+    console.log("created new user");
+    // Reload the page to get the updated list
+    location.reload();
+  });
+});
 
 // The API object contains methods for each kind of request we'll make
 var API = {
