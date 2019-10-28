@@ -28,7 +28,7 @@ module.exports = function(app) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(
       dbExample
     ) {
-      res.render("example", {
+      res.render("examples", {
         example: dbExample
       });
     });
