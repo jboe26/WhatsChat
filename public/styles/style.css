@@ -1,46 +1,59 @@
 .main-menu {
     background-color: #016FB9;
     width: 1400px;
+    font-family: 'PT Sans', sans-serif;
+    margin: auto;
 }
 
-.container {
+.container, body {
     background-color: #016FB9;
     text-align  : center;
+    font-family: 'PT Sans', sans-serif;
 }
 
-#form {
+#form{
     background-color: #004777;
     color: white;
+    height: 750px;
+    font-family: 'PT Sans', sans-serif;
+    
 }
 
 .chan-link {
     background: #004777; 
     display: inline-block; 
     border: none;
+    font-family: 'PT Sans', sans-serif;
 }
 
 .footer {
     height: 30px;
     width: 222px;
     text-align: center;
+    font-family: 'PT Sans', sans-serif;
 }
 
 .side-bar {
     background: #016FB9;
     height: 690px;
     width: 240px;
+    font-family: 'PT Sans', sans-serif;
 }
 
 .main {
     margin-left: 550px;
     height: 300px;
+    font-family: 'PT Sans', sans-serif;
 }
 
 .main-title {
     text-align: center;
+    font-family: 'PT Sans', sans-serif;
 }
 
 .title-buttons {
     margin-top: 100px;
+    font-family: 'PT Sans', sans-serif;
 
 }
+
