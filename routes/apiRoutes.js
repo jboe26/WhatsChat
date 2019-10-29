@@ -8,7 +8,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/user/:id", function(req, res) {
+  app.post("/api/user1", function(req, res) {
     db.User.findOne({
       where: {
         userName: req.body.userName,
@@ -16,11 +16,10 @@ module.exports = function(app) {
       }
     }).then(function(results) {
       if (results) {
-        console.log("Login successful");
+        res.send(true);
       } else {
-        console.log("Login unsuccessful");
+        res.send(false);
       }
-      res.json(results);
     });
   });
 
@@ -28,21 +27,20 @@ module.exports = function(app) {
   app.post("/api/user", function(req, res) {
     db.User.findOne({
       where: {
-        userName: req.body.userName,
-        email: req.body.email
+        userName: req.body.userName
       }
     }).then(function(results) {
       if (results) {
-        console.log("User ID or Email already exist");
-        console.log(results);
+        //  console.log("User ID or Email already exist");
+        res.send(true);
       } else {
         db.User.create({
           userName: req.body.userName,
           password: req.body.password,
           email: req.body.email
         })
-          .then(function(result) {
-            res.json(result);
+          .then(function() {
+            res.send(false);
           })
           .catch(function(err) {
             var errorMsg = err.errors[0];
