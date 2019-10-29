@@ -12,10 +12,10 @@
     font-family: 'PT Sans', sans-serif;
 }
 
-#form{
+#form, #card, .card {
     background-color: #004777;
     color: white;
-    height: 750px;
+    height: 300px;
     font-family: 'PT Sans', sans-serif;
     
 }
