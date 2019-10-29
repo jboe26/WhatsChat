@@ -29,7 +29,7 @@ $signUp.on("submit", function(event) {
       if (results) {
         window.location.href = "/signup/failed";
       } else {
-        window.location.href = "/channels";
+        window.location.href = "/channel";
       }
       // Reload the page to get the updated list
       // location.reload();
@@ -65,7 +65,7 @@ $logIn.on("submit", function(event) {
   })
     .then(function(results) {
       if (results) {
-        window.location.href = "/channels";
+        window.location.href = "/channel";
       } else {
         window.location.href = "/login/failed";
       }

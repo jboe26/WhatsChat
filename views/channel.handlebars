@@ -6,7 +6,7 @@
 
     <div class="row">
 
-    <h2 class="offset-2 mb-5 mt-4"> Channels </h2> <!-- Title -->
+    <h2 class="offset-2 mb-5 mt-4"> Channel {{id}} </h2> <!-- Title -->
 
     </div>
 
@@ -48,43 +48,33 @@
 
     </div> <!-- end channel select col -->
 
-     <div class="col-3 mt-5 main"> <!-- start main text col -->
+     <div class="col-9 mt-5 chat-area border"> <!-- start chat area col -->
 
-     <div class="main-title"> <!-- start title -->
+<div class="row"> <!-- start chat area row -->
 
-       <h2>Welcome to</h2>
+<div class="col-12 msg-area"> <!-- start msg area col -->
 
-      <h1>WhatsChat</h1>
+<br>
 
-      </div> <!-- end title -->
+<p class="msg msg-recv"> hey friend, how are you doing? </p>
 
-      <div class="title-buttons"> <!-- start login/sign up buttons div -->
+<br>
 
-        <div class="row"> <!-- start login button row -->
+<p class="msg msg-sent"> I am doing well, other friend, this is how people talk... normally. </p>
 
-          <button class="border col"> <!-- start login button col --> <!-- on click redirects to login page -->
+<br>
 
-            <p>Login</p>
+<p class="msg msg-recv"> yesss, </p>
 
-          </button> <!-- end login button col -->
+</div> <!-- end msg area col -->
 
-        </div> <!-- end login button row -->
+</div> <!-- end chat area row -->
 
-        <p class="my-2 text-center">or</p>
-
-        <div class="row"> <!-- start sign up button row -->
-
-          <button class="border col"> <!-- start sign up button col --> <!-- on click redirects to sign up page -->
-
-            <p>Sign up</p>
-
-          </button> <!-- end sign up button col -->
-
-        </div> <!-- end sign up button row -->
-
-      </div> <!-- end login/sign up buttons div -->
-
-    </div> <!-- end main text col -->
+    </div> <!-- end chat area col -->
+<div>
+  <textarea class="msg-input"></textarea>
+  <button class="msg-submit">submit</button>
+  </div>
 
   </div> <!-- end top row -->
 
