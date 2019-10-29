@@ -28,6 +28,12 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/channel", function(req, res) {
+    db.User.findAll({}).then(function() {
+      res.render("channel");
+    });
+  });
+
   app.get("/signup/failed", function(req, res) {
     res.render("signup", { msg: "User already exists. Please try again!" });
   });
