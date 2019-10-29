@@ -2,13 +2,13 @@ var db = require("../models");
 
 module.exports = function(app) {
   //Get all users
-  app.get("/api/user", function(req, res) {
+  app.get("/api/signup", function(req, res) {
     db.User.findAll().then(function(results) {
       res.json(results);
     });
   });
 
-  app.post("/api/user1", function(req, res) {
+  app.post("/api/login", function(req, res) {
     db.User.findOne({
       where: {
         userName: req.body.userName,
@@ -16,7 +16,8 @@ module.exports = function(app) {
       }
     }).then(function(results) {
       if (results) {
-        res.send(true);
+        //console.log(results.createdAt);
+        res.send(results.key.toString());
       } else {
         res.send(false);
       }
@@ -24,7 +25,7 @@ module.exports = function(app) {
   });
 
   //Create new user
-  app.post("/api/user", function(req, res) {
+  app.post("/api/signup", function(req, res) {
     db.User.findOne({
       where: {
         userName: req.body.userName
@@ -32,15 +33,15 @@ module.exports = function(app) {
     }).then(function(results) {
       if (results) {
         //  console.log("User ID or Email already exist");
-        res.send(true);
+        res.send("found");
       } else {
         db.User.create({
           userName: req.body.userName,
           password: req.body.password,
-          email: req.body.email
+          key: Math.floor(Math.random() * 1000000000) + 1000000000
         })
-          .then(function() {
-            res.send(false);
+          .then(function(results) {
+            res.send(results.key.toString());
           })
           .catch(function(err) {
             var errorMsg = err.errors[0];
