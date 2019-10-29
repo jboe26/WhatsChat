@@ -20,16 +20,16 @@ $signUp.on("submit", function(event) {
       .trim()
   };
 
-  $.ajax("/api/user", {
+  $.ajax("/api/signup", {
     type: "POST",
     data: newUser
   })
     .then(function(results) {
       // alert(results);
-      if (results) {
+      if (results === "found") {
         window.location.href = "/signup/failed";
       } else {
-        window.location.href = "/channel";
+        window.location.href = "/welcome/" + results;
       }
       // Reload the page to get the updated list
       // location.reload();
@@ -59,13 +59,13 @@ $logIn.on("submit", function(event) {
       .val()
       .trim()
   };
-  $.ajax("/api/user1", {
+  $.ajax("/api/login", {
     type: "POST",
     data: User
   })
     .then(function(results) {
       if (results) {
-        window.location.href = "/channel";
+        window.location.href = "/welcome/" + results;
       } else {
         window.location.href = "/login/failed";
       }

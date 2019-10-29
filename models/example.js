@@ -15,12 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [4] // minimum 4 characters
       }
     },
-    email: {
-      type: DataTypes.STRING,
-      validate: {
-        isEmail: true //checks for proper email format
-      }
-    }
+    key: DataTypes.INTEGER
   });
   return User;
 };
