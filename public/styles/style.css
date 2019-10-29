@@ -1,6 +1,7 @@
+
 .main-menu {
     background-color: #016FB9;
-    width: 1400px;
+    width: 100%;
 }
 
 .container {
@@ -43,4 +44,49 @@
 .title-buttons {
     margin-top: 100px;
 
+}
+
+.chat-area {
+    margin-left: 290px;
+    height: 550px;
+    overflow: scroll;
+}
+
+.msg-area {
+    border-style: solid;
+    width: 700px;
+    min-height: 600px;
+    font-size: 20px;
+}
+
+.msg-recv {
+    background-color: greenyellow;
+    padding: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 50px;
+    float: left;
+}
+
+.msg-sent {
+    background-color: lightblue;
+    padding: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 50px;
+    float: right;
+}
+
+.msg-input{
+    width: 1000px;
+    position: relative;
+    left: 290px;
+}
+
+.msg-submit{
+    position: relative;
+    left: 290px;
+    bottom: 20px;
+    height: 55px;
+    width: 100px;
 }

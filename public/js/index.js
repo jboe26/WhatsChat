@@ -28,8 +28,9 @@ $signUp.on("submit", function(event) {
     data: newUser
   }).then(function() {
     alert("created new user");
+    console.log(newUser);
     // Reload the page to get the updated list
-    location.reload();
+    //location.reload();
   });
 });
 

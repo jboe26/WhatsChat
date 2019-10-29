@@ -20,6 +20,12 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/channel", function(req, res) {
+    db.User.findAll({}).then(function() {
+      res.render("channel");
+    });
+  });
+
   // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {
   //   db.Example.findOne({ where: { id: req.params.id } }).then(function(

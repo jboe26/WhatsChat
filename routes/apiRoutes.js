@@ -8,7 +8,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/user1", function(req, res) {
+  app.post("/api/user/:id", function(req, res) {
     db.User.findOne({
       where: {
         userName: req.body.userName,
@@ -34,6 +34,7 @@ module.exports = function(app) {
     }).then(function(results) {
       if (results) {
         console.log("User ID or Email already exist");
+        console.log(results);
       } else {
         db.User.create({
           userName: req.body.userName,
