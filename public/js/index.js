@@ -17,20 +17,34 @@ $signUp.on("submit", function(event) {
       .trim(),
     password: $("#createuser [name=psw]")
       .val()
-      .trim(),
-    email: $("#createuser [name=email]")
-      .val()
       .trim()
   };
 
   $.ajax("/api/user", {
     type: "POST",
     data: newUser
-  }).then(function() {
-    alert("created new user");
-    // Reload the page to get the updated list
-    location.reload();
-  });
+  })
+    .then(function(results) {
+      // alert(results);
+      if (results) {
+        window.location.href = "/signup/failed";
+      } else {
+        window.location.href = "/channels";
+      }
+      // Reload the page to get the updated list
+      // location.reload();
+    })
+    .catch(function(err) {
+      var errorMsg = err.errors[0];
+      // eslint-disable-next-line no-unused-vars
+      var CustomErr = {
+        // eslint-disable-next-line camelcase
+        error_description: errorMsg.message,
+        // eslint-disable-next-line camelcase
+        field_name: errorMsg.path
+      };
+      res.status(500).json(err);
+    });
 });
 
 //login API
@@ -48,11 +62,27 @@ $logIn.on("submit", function(event) {
   $.ajax("/api/user1", {
     type: "POST",
     data: User
-  }).then(function() {
-    console.log("created new user");
-    // Reload the page to get the updated list
-    location.reload();
-  });
+  })
+    .then(function(results) {
+      if (results) {
+        window.location.href = "/channels";
+      } else {
+        window.location.href = "/login/failed";
+      }
+      // Reload the page to get the updated list
+      //location.reload();
+    })
+    .catch(function(err) {
+      var errorMsg = err.errors[0];
+      // eslint-disable-next-line no-unused-vars
+      var CustomErr = {
+        // eslint-disable-next-line camelcase
+        error_description: errorMsg.message,
+        // eslint-disable-next-line camelcase
+        field_name: errorMsg.path
+      };
+      res.status(500).json(err);
+    });
 });
 
 // The API object contains methods for each kind of request we'll make
