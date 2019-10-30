@@ -1,16 +1,20 @@
-<h1>Welcome to WhatsChat {{user}}</h1>
+{{!-- logo --}}
+
+<h1>Welcome to WhatsChat, {{user}}</h1>
 
 <div id="messages">
     <ul>
-    {{#each msg}}
-    <li style="list-style-type: none;">
-        {{this.user}} : {{this.message}}
-    </li>
-    {{/each}}
+        {{#each msg}}
+        <li style="list-style-type: none;">
+            {{this.user}} : {{this.message}}
+        </li>
+        {{/each}}
     </ul>
 </div>
 <form id="chat">
-    <input type="name" placeholder="Enter Username" name="name" required>
+    <input type="name" placeholder="Type your message" name="name" required>
     <button type="submit" class="btn btn-primary">
         Submit</button>
 </form>
+<button type="submit" id="logout"><a href="/">Logout</button></a><br><br>
+<button type="submit" id="logout"><a href="/">Home</button></a>
