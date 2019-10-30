@@ -22,10 +22,6 @@ module.exports = function(app) {
     res.render("signup");
   });
 
-  app.get("/channel", function(req, res) {
-    res.render("channel");
-  });
-
   app.get("/signup/failed", function(req, res) {
     res.render("signup", { msg: "User already exists. Please try again!" });
   });
@@ -36,8 +32,14 @@ module.exports = function(app) {
         key: req.params.key
       }
     }).then(function(results) {
-      res.render("welcome", { user: results.userName });
+      db.Message.findAll({}).then(function(results1) {
+        res.render("welcome", { user: results.userName, msg: results1 });
+      });
     });
+  });
+
+  app.get("/channel1", function(req, res) {
+    res.render("channel");
   });
 
   // Load example page and pass in an example by id

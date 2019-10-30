@@ -8,6 +8,33 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/typer/:key", function(req, res) {
+    // db.Message.create({
+    //   message: req.body.message
+    // }).then(function() {
+    //   db.User.findOne({
+    //     where: {
+    //       key: req.params.key
+    //     }
+    //   }).then(function(results) {
+    //     console.log(results.userName);
+    //     res.send(results.userName);
+    //   });
+    // });
+    db.User.findOne({
+      where: {
+        key: req.params.key
+      }
+    }).then(function(results) {
+      db.Message.create({
+        user: results.userName,
+        message: req.body.message
+      }).then(function(results) {
+        res.send(results.user);
+      });
+    });
+  });
+
   app.post("/api/login", function(req, res) {
     db.User.findOne({
       where: {
