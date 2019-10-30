@@ -6,6 +6,7 @@ var $exampleList = $("#example-list");
 var $signUp = $("#createuser");
 var $logIn = $("#loginuser");
 var $chat = $("#chat");
+
 //signup API
 
 $chat.on("submit", function(event) {
