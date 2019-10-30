@@ -5,8 +5,30 @@ var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 var $signUp = $("#createuser");
 var $logIn = $("#loginuser");
-
+var $chat = $("#chat");
 //signup API
+
+$chat.on("submit", function(event) {
+  event.preventDefault();
+  var getkey = window.location.href.split("/");
+  var typeData = {
+    message: $("#chat [name=name]")
+      .val()
+      .trim(),
+
+    key: getkey[4]
+  };
+  console.log(typeData.key);
+
+  $.ajax("/api/typer/" + typeData.key, {
+    type: "POST",
+    data: typeData
+  }).then(function(results) {
+    $("#messages").append($("<p>").html(results + " : " + typeData.message));
+    $("#chat [name=name]").val("");
+    location.reload();
+  });
+});
 
 $signUp.on("submit", function(event) {
   event.preventDefault();
