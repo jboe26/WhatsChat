@@ -32,16 +32,15 @@ module.exports = function(app) {
         key: req.params.key
       }
     }).then(function(results) {
-      // db.Message.findAll({}).then(function(results1) {
-      res.render("welcome", { user: results.userName });
-      //  res.render("welcome", { user: results.userName, msg: results1 });
-      //});
+      db.Message.findAll({}).then(function(results1) {
+        res.render("welcome", { user: results.userName, msg: results1 });
+      });
     });
   });
 
-  // app.get("/channel1", function(req, res) {
-  //   res.render("channel");
-  // });
+  app.get("/channel1", function(req, res) {
+    res.render("channel");
+  });
 
   // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {
