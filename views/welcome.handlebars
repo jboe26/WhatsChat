@@ -1,8 +1,8 @@
 {{!-- logo --}}
 
-<h1>Welcome to WhatsChat, {{user}}</h1>
+<h1>Welcome to WhatsChat, <span id="user">{{user}}</span></h1>
 
-<div id="messages">
+{{!-- <div id="messages">
     <ul>
         {{#each msg}}
         <li style="list-style-type: none;">
@@ -15,6 +15,55 @@
     <input type="name" placeholder="Type your message" name="name" required>
     <button type="submit" class="btn btn-primary">
         Submit</button>
-</form>
+</form> --}}
 <button type="submit" id="logout"><a href="/">Logout</button></a><br><br>
 <button type="submit" id="logout"><a href="/">Home</button></a>
+<ul class="messages"></ul>
+<form>
+  <input type="text" class="input" autocomplete="off" autofocus />
+  <button>Send</button>
+</form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  const form = document.querySelector("form");
+  const input = document.querySelector(".input");
+  const messages = document.querySelector(".messages");
+  const username = $("#user").text();
+  const socket = io();
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    addMessage(username + ": " + input.value);
+
+    socket.emit("chat_message", {
+      message: input.value
+    });
+
+    input.value = "";
+    return false;
+  }, false);
+
+  socket.on("chat_message", function (data) {
+    addMessage(data.username + ": " + data.message);
+  });
+
+  socket.on("user_join", function (data) {
+    addMessage(data + " just joined the chat!");
+  });
+
+  socket.on("user_leave", function (data) {
+    addMessage(data + " has left the chat.");
+  });
+
+  addMessage("You have joined the chat as '" + username + "'.");
+  socket.emit("user_join", username);
+
+  function addMessage(message) {
+    const li = document.createElement("li");
+    li.innerHTML = message;
+    messages.appendChild(li);
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+</script>
