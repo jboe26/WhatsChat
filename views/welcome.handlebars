@@ -1,31 +1,73 @@
 {{!-- logo --}}
-
+<div style="position: fixed; z-index: 2; width: 100%; top: 0; background-color:#016FB9;">
 <h1>Welcome to WhatsChat, <span id="user">{{user}}</span></h1>
-
-{{!-- <div id="messages">
-    <ul>
-        {{#each msg}}
-        <li style="list-style-type: none;">
-            {{this.user}} : {{this.message}}
-        </li>
-        {{/each}}
-    </ul>
+<button type="submit" id="logout"><a href="/logout">Logout</button></a><br><br>
 </div>
-<form id="chat">
-    <input type="name" placeholder="Type your message" name="name" required>
-    <button type="submit" class="btn btn-primary">
-        Submit</button>
-</form> --}}
-<button type="submit" id="logout"><a href="/">Logout</button></a><br><br>
-<button type="submit" id="logout"><a href="/">Home</button></a>
+<div style="margin-top: 110px;;">
 <ul class="messages" style="list-style-type:none"></ul>
-<form>
+</div>
+<form style="position: fixed; z-index: 2; width: 100%; bottom: 0; background-color:#016FB9;">
   <input type="text" class="input" autocomplete="off" autofocus />
   <button>Send</button>
 </form>
+<style>
+  
+    form {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        box-sizing: border-box;
+        padding: 0.25rem;
+    }
+
+    form input {
+        border: 0;
+        padding: 0.5rem;
+        width: 100%;
+        outline: 0;
+        margin-right: 0.5rem;
+        border-radius: 0.25rem;
+        background: #ccc;
+    }
+
+    form button {
+        width: 6rem;
+        background-color: #1b8c00;
+        color: white;
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        text-transform: uppercase;
+    }
+
+    form button:hover {
+        background-color: #166d01;
+    }
+
+    .messages {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 3rem;
+    }
+
+    .messages li {
+        padding: 0.5rem;
+    }
+
+    .messages li:nth-child(odd) {
+        background: #eee;
+    }
+    .messages li:nth-child(even) {
+        background: orange;
+    }
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+  
   const form = document.querySelector("form");
   const input = document.querySelector(".input");
   const messages = document.querySelector(".messages");
