@@ -1,7 +1,7 @@
 {{!-- logo --}}
 <div style="position: fixed; z-index: 2; width: 100%; top: 0; background-color:#016FB9;">
 <h1>Welcome to WhatsChat, <span id="user">{{user}}</span></h1>
-<button type="submit" id="logout"><a href="/logout">Logout</button></a><br><br>
+<button type="submit" id="logout"><a href="/logout"><span id="logout_text">Logout</span></button></a><br><br>
 </div>
 <div style="margin-top: 110px;;">
 <ul class="messages" style="list-style-type:none"></ul>
@@ -58,10 +58,10 @@
     }
 
     .messages li:nth-child(odd) {
-        background: #eee;
+        background: #ffc79a;
     }
     .messages li:nth-child(even) {
-        background: orange;
+        background: #f19953;
     }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>

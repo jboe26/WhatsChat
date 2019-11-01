@@ -28,7 +28,29 @@
 }
 
 #logout {
-    background-color: orange;
+    background-color: #f19953;
+    width: 6rem;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+#logout:hover {
+    background-color: #e27720;
+    color: white;
+    text-decoration: none;
+
+}
+#logout_text {
+    color: white;
+}
+
+#logout_text:hover {
+    text-decoration: none;    
+    color: white;
 }
 
 .footer {
@@ -105,4 +127,8 @@
     bottom: 20px;
     height: 55px;
     width: 100px;
+}
+
+a:hover {
+    text-decoration: none;
 }
