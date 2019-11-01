@@ -1,55 +1,17 @@
 var db = require("../models");
+var passport = require("../config/passport");
 
 module.exports = function(app) {
-  //Get all users
-  app.get("/api/signup", function(req, res) {
-    db.User.findAll().then(function(results) {
-      res.json(results);
-    });
-  });
-
-  app.post("/api/typer/:key", function(req, res) {
-    // db.Message.create({
-    //   message: req.body.message
-    // }).then(function() {
-    //   db.User.findOne({
-    //     where: {
-    //       key: req.params.key
-    //     }
-    //   }).then(function(results) {
-    //     console.log(results.userName);
-    //     res.send(results.userName);
-    //   });
-    // });
-    db.User.findOne({
-      where: {
-        key: req.params.key
-      }
-    }).then(function(results) {
-      db.Message.create({
-        user: results.userName,
-        message: req.body.message
-      }).then(function(results) {
-        res.send(results.user);
-      });
-    });
-  });
-
-  app.post("/api/login", function(req, res) {
-    db.User.findOne({
-      where: {
-        userName: req.body.userName,
-        password: req.body.password
-      }
-    }).then(function(results) {
-      if (results) {
-        //console.log(results.createdAt);
-        res.send(results.key.toString());
-      } else {
-        res.send(false);
-      }
-    });
-  });
+  app.post(
+    "/api/login",
+    passport.authenticate("local", {
+      successRedirect: "/welcome",
+      failureRedirect: "/login/failed"
+    }),
+    function(req, res) {
+      res.json(req.user);
+    }
+  );
 
   //Create new user
   app.post("/api/signup", function(req, res) {
@@ -64,26 +26,76 @@ module.exports = function(app) {
       } else {
         db.User.create({
           userName: req.body.userName,
-          password: req.body.password,
-          key: Math.floor(Math.random() * 1000000000) + 1000000000
+          password: req.body.password
         })
-          .then(function(results) {
-            res.send(results.key.toString());
+          .then(function() {
+            res.redirect(307, "/api/login");
           })
           .catch(function(err) {
-            var errorMsg = err.errors[0];
-            // eslint-disable-next-line no-unused-vars
-            var CustomErr = {
-              // eslint-disable-next-line camelcase
-              error_description: errorMsg.message,
-              // eslint-disable-next-line camelcase
-              field_name: errorMsg.path
-            };
-            res.status(500).json(err);
+            res.status(401).json(err);
           });
       }
     });
   });
+  // Route for logging user out
+  app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
+
+  app.get("/", function(req, res) {
+    res.render("login");
+  });
+
+  app.get("/signup", function(req, res) {
+    res.render("signup");
+  });
+
+  // Route for getting some data about our user to be used client side
+  app.get("/api/user_data", function(req, res) {
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({});
+    } else {
+      // Otherwise send back the user's userName and id
+      // Sending back a password, even a hashed password, isn't a good idea
+      res.json({
+        userName: req.user.userName,
+        id: req.user.id
+      });
+    }
+  });
+  // app.post("/api/typer/:key", function(req, res) {
+  //   db.User.findOne({
+  //     where: {
+  //       key: req.params.key
+  //     }
+  //   }).then(function(results) {
+  //     db.Message.create({
+  //       user: results.userName,
+  //       message: req.body.message
+  //     }).then(function(results) {
+  //       res.send(results.user);
+  //     });
+  //   });
+  // });
+
+  // app.post("/api/login", function(req, res) {
+  //   db.User.findOne({
+  //     where: {
+  //       userName: req.body.userName,
+  //       password: req.body.password
+  //     }
+  //   }).then(function(results) {
+  //     if (results) {
+  //       //console.log(results.createdAt);
+  //       res.send(results.key.toString());
+  //     } else {
+  //       res.send(false);
+  //     }
+  //   });
+  // });
+
   // Get all channels
   app.get("/api/examples", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
