@@ -95,6 +95,14 @@ function idleTimer() {
 }
 idleTimer();
 
+// avoiding the < and > sign
+document.getElementById("winput").onkeypress = function(e) {
+  var chr = String.fromCharCode(e.which);
+  if ("></'".indexOf(chr) >= 0) {
+    return false;
+  }
+};
+
 // Code for socket IO to make chat app live.
 
 var form = document.querySelector("form");
@@ -110,7 +118,7 @@ form.addEventListener(
   function(event) {
     event.preventDefault();
 
-    addMessage(username + ": " + input.value);
+    addMessage(username.bold() + ": " + input.value);
 
     socket.emit("chat_message", {
       message: input.value
@@ -150,7 +158,7 @@ socket.on("user_leave", function(data) {
   addMessage(data + " has left the chat.");
 });
 
-addMessage("You have joined the chat as '" + username + "'.");
+addMessage("You have joined the chat as " + username.bold() + ".");
 socket.emit("user_join", username);
 
 function addMessage(message) {
