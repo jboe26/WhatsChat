@@ -5,6 +5,7 @@ var db = require("./models");
 var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
+var count = 0;
 
 var app = express();
 var http = require("http").Server(app);
@@ -52,6 +53,10 @@ io.on("connection", function(socket) {
   socket.on("user_join", function(data) {
     this.username = data;
     socket.broadcast.emit("user_join", data);
+
+    count++;
+
+    io.emit("counter", { count: count });
   });
 
   socket.on("chat_message", function(data) {
@@ -61,6 +66,10 @@ io.on("connection", function(socket) {
 
   socket.on("disconnect", function() {
     socket.broadcast.emit("user_leave", this.username);
+
+    count--;
+
+    io.emit("counter", { count: count });
   });
 });
 // Starting the server, syncing our models ------------------------------------/

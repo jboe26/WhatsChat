@@ -1,73 +1,74 @@
 {{!-- logo --}}
 <div style="position: fixed; z-index: 2; width: 100%; top: 0; background-color:#016FB9;">
-<h1>Welcome to WhatsChat, <span id="user">{{user}}</span></h1>
-<button type="submit" id="logout"><a href="/logout"><span id="logout_text">Logout</span></button></a><br><br>
+  <h1>Welcome to WhatsChat, <span id="user">{{user}}</span></h1>
+  <h5>Users connected : <span id="counter"></span></h5>
+  <button type="submit" id="logout"><a href="/logout">Logout</button></a><br><br>
 </div>
 <div style="margin-top: 110px;;">
-<ul class="messages" style="list-style-type:none"></ul>
+  <ul class="messages" style="list-style-type:none"></ul>
 </div>
 <form style="position: fixed; z-index: 2; width: 100%; bottom: 0; background-color:#016FB9;">
   <input type="text" class="input" autocomplete="off" autofocus />
   <button>Send</button>
 </form>
 <style>
-  
-    form {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        box-sizing: border-box;
-        padding: 0.25rem;
-    }
+  form {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0.25rem;
+  }
 
-    form input {
-        border: 0;
-        padding: 0.5rem;
-        width: 100%;
-        outline: 0;
-        margin-right: 0.5rem;
-        border-radius: 0.25rem;
-        background: #ccc;
-    }
+  form input {
+    border: 0;
+    padding: 0.5rem;
+    width: 100%;
+    outline: 0;
+    margin-right: 0.5rem;
+    border-radius: 0.25rem;
+    background: #ccc;
+  }
 
-    form button {
-        width: 6rem;
-        background-color: #1b8c00;
-        color: white;
-        border: none;
-        padding: 0.5rem;
-        cursor: pointer;
-        border-radius: 0.25rem;
-        text-transform: uppercase;
-    }
+  form button {
+    width: 6rem;
+    background-color: #1b8c00;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+  }
 
-    form button:hover {
-        background-color: #166d01;
-    }
+  form button:hover {
+    background-color: #166d01;
+  }
 
-    .messages {
-        margin: 0;
-        padding: 0;
-        margin-bottom: 3rem;
-    }
+  .messages {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 3rem;
+  }
 
-    .messages li {
-        padding: 0.5rem;
-    }
+  .messages li {
+    padding: 0.5rem;
+  }
 
-    .messages li:nth-child(odd) {
-        background: #ffc79a;
-    }
-    .messages li:nth-child(even) {
-        background: #f19953;
-    }
+  .messages li:nth-child(odd) {
+    background: #ffc79a;
+  }
+
+  .messages li:nth-child(even) {
+    background: #f19953;
+  }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-  
+
   const form = document.querySelector("form");
   const input = document.querySelector(".input");
   const messages = document.querySelector(".messages");
@@ -89,6 +90,10 @@
 
   socket.on("chat_message", function (data) {
     addMessage(data.username + ": " + data.message);
+  });
+
+  socket.on('counter', function (data) {
+    $("#counter").text(data.count);
   });
 
   socket.on("user_join", function (data) {
