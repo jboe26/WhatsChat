@@ -64,6 +64,11 @@ io.on("connection", function(socket) {
     socket.broadcast.emit("chat_message", data);
   });
 
+  socket.on("typing", function(data) {
+    // send an event to everyone but the person who emitted the typing event to the server
+    socket.broadcast.emit("typing", data);
+  });
+
   socket.on("disconnect", function() {
     socket.broadcast.emit("user_leave", this.username);
 
