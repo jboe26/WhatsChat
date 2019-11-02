@@ -15,7 +15,7 @@
 #form, #card, .card {
     background-color: #004777;
     color: white;
-    height: 300px;
+    /* height: 300px; */
     font-family: 'PT Sans', sans-serif;
     
 }
@@ -131,4 +131,8 @@
 
 a:hover {
     text-decoration: none;
+}
+
+#login_logo {
+    max-height: 70%;
 }
