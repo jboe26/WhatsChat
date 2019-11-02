@@ -1,11 +1,14 @@
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-8 offset-2">
-                <div class="card mt-4">
-                    <div class="card">
+        <div class="row justify-content-sm-center">
+            <div class="col-lg-8 col-sm-10">
+                {{!-- <div class="col-8 offset-2"> --}}
+                <div class="card mt-4" id="my-shadow">
+                    <div class="card" id="my-border">
                         <div class="card-body" id="form">
-                            <h4>Welcome to WhatsChat!</h4>
+                            {{!-- <h4>Welcome to WhatsChat!</h4> --}}
+                            <img src="/images/whatsCHAT600.png" class="img-fluid" id="login_logo">
+                            <br><br>
                             <h5 class="card-title">Login to start chatting today!</h5>
                             <form id="loginuser">
 
@@ -22,7 +25,10 @@
                             </form>
                             {{!-- <a href="/"><i class="fas fa-home"></i> Back To Home</a>
                             <br> --}}
-                            <a href="/signup"><i class="fas fa-user-plus"></i> Not a member yet? Click here to sign up!</a>
+                            <a href="/signup" id="text-fader"><i class="fas fa-user-plus"></i> Not a member yet? Click here to sign
+                                up!</a>
+
+
                         </div>
                     </div>
 
