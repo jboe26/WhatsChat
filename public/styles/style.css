@@ -17,7 +17,6 @@
     color: white;
     /* height: 300px; */
     font-family: 'PT Sans', sans-serif;
-    
 }
 
 .chan-link {
@@ -134,5 +133,110 @@ a:hover {
 }
 
 #login_logo {
-    max-height: 70%;
+    max-width: 80%;
+}
+#wh1 {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    top: 0;
+    background-color: #016FB9;
+  }
+
+  #wform {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0.25rem;
+    z-index: 2;
+    background-color: #016FB9;
+  }
+
+  #winput {
+    border: 0;
+    padding: 0.5rem;
+    width: 100%;
+    outline: 0;
+    margin-right: 0.5rem;
+    border-radius: 0.25rem;
+    background: #ccc;
+  }
+
+  #wbutton {
+    width: 6rem;
+    background-color: #1b8c00;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+  }
+
+  #wbutton:hover {
+    background-color: #166d01;
+  }
+
+  .messages {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 3rem;
+  }
+
+  .messages li {
+    padding: 0.5rem;
+  }
+
+  .messages li:nth-child(odd) {
+    background: #ffd9ba;
+  }
+
+  .messages li:nth-child(even) {
+    background: #ffeedf;
+  }
+
+  #my-shadow {
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  #my-border {
+    border: 2px solid #eeeeee;
+  }
+
+
+  #text-fader{
+    -webkit-animation: color-change 4s infinite;
+    -moz-animation: color-change 4s infinite;
+    -o-animation: color-change 4s infinite;
+    -ms-animation: color-change 4s infinite;
+    animation: color-change 4s infinite;
+}
+
+@-webkit-keyframes color-change {
+    0% { color: #cccccc; }
+    50% { color: #016fb9; }
+    100% { color: #cccccc; }
+}
+@-moz-keyframes color-change {
+    0% { color: #cccccc; }
+    50% { color: #016fb9; }
+    100% { color: #cccccc; }
+}
+@-ms-keyframes color-change {
+    0% { color: #cccccc; }
+    50% { color: #016fb9; }
+    100% { color: #cccccc; }
+}
+@-o-keyframes color-change {
+    0% { color: #cccccc; }
+    50% { color: #016fb9; }
+    100% { color: #cccccc; }
+}
+@keyframes color-change {
+    0% { color: #cccccc; }
+    50% { color: #016fb9; }
+    100% { color: #cccccc; }
 }
