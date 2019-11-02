@@ -1,26 +1,27 @@
-
     <body>
         <div class="container">
-            <div class="row">
-                <div class="col-8 offset-2">
-                    <div class="card mt-4" id="card">
+            <div class="row justify-content-sm-center">
+                <div class="col-lg-8 col-sm-10">
+                    <div class="card mt-4 my-border" id="my-shadow">
                         <div class="card-body" id="form">
-                            <h4>Welcome to WhatsChat!</h4>
+                            {{!-- <h4>Welcome to WhatsChat!</h4> --}}
+                            <img src="/images/whatsCHAT600.png" class="img-fluid" id="login_logo">
+                            <br><br>
                             <h5 class="card-title">Sign-Up to start chatting today!</h5>
                             <form id="createuser">
                          
                                 <label for="name"><i class="fas fa-user"></i>  <b>Username:</b></label>
-                                <input type="name" placeholder="Enter Username" name="name" required>
+                                <input type="name" placeholder="John Doe" name="name" required>
                                 <br>
                                 <label for="psw"><i class="fas fa-lock"></i>  <b>Password:</b></label>
-                                <input type="password" placeholder="Enter Password" name="psw" required>
+                                <input type="password" placeholder="123password" name="psw" required>
                                 <br>
                                 <button type="submit" class="btn btn-primary"><i class="fas fa-user-plus"></i>  Sign Up</button>
 
                             </form>
                             {{!-- <a href="/"><i class="fas fa-home"></i>  Back To Home</a>
                             <br> --}}
-                            <a href="/"><i class="fa fa-sign-in-alt"></i>  Back To Login page</a>
+                            <a href="/" id="text-fader"><i class="fa fa-sign-in-alt"></i>  Back To Login page</a>
                         </div>
                         <h4>{{msg}}</h4>
                     </div>
