@@ -100,7 +100,9 @@ idleTimer();
 var form = document.querySelector("form");
 var input = document.querySelector(".input");
 var messages = document.querySelector(".messages");
+var message = document.getElementById("winput");
 var username = $("#user").text();
+var typing = document.getElementById("typing");
 var socket = io();
 
 form.addEventListener(
@@ -122,6 +124,18 @@ form.addEventListener(
 
 socket.on("chat_message", function(data) {
   addMessage(data.username + ": " + data.message);
+  typing.innerHTML = "";
+});
+
+// emit a “typing” event when we start typing
+message.addEventListener("keypress", function() {
+  socket.emit("typing", username);
+});
+
+// when we receive a typing event, show that a user is typing
+socket.on("typing", function(data) {
+  console.log("this is typing");
+  typing.innerHTML = "<em>" + data + " is typing</em>";
 });
 
 socket.on("counter", function(data) {
