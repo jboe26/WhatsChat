@@ -131,7 +131,7 @@ form.addEventListener(
 );
 
 socket.on("chat_message", function(data) {
-  addMessage(data.username + ": " + data.message);
+  addMessage(data.username.bold() + ": " + data.message);
   typing.innerHTML = "";
 });
 
@@ -151,11 +151,11 @@ socket.on("counter", function(data) {
 });
 
 socket.on("user_join", function(data) {
-  addMessage(data + " just joined the chat!");
+  addMessage(data.bold() + " just joined the chat!");
 });
 
 socket.on("user_leave", function(data) {
-  addMessage(data + " has left the chat.");
+  addMessage(data.bold() + " has left the chat.");
 });
 
 addMessage("You have joined the chat as " + username.bold() + ".");
