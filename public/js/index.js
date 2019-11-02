@@ -75,3 +75,73 @@ $logIn.on("submit", function(event) {
       res.status(500).json(err);
     });
 });
+
+//{{!-- auto logout after 15 minutes (900000 seconds) --}}
+function idleTimer() {
+  var t;
+  window.onmousemove = resetTimer;
+  window.onclick = resetTimer;
+  window.onscroll = resetTimer;
+  window.onkeypress = resetTimer;
+
+  function logout() {
+    window.location.href = "/logout";
+  }
+
+  function resetTimer() {
+    clearTimeout(t);
+    t = setTimeout(logout, 900000);
+  }
+}
+idleTimer();
+
+// Code for socket IO to make chat app live.
+
+var form = document.querySelector("form");
+var input = document.querySelector(".input");
+var messages = document.querySelector(".messages");
+var username = $("#user").text();
+var socket = io();
+
+form.addEventListener(
+  "submit",
+  function(event) {
+    event.preventDefault();
+
+    addMessage(username + ": " + input.value);
+
+    socket.emit("chat_message", {
+      message: input.value
+    });
+
+    input.value = "";
+    return false;
+  },
+  false
+);
+
+socket.on("chat_message", function(data) {
+  addMessage(data.username + ": " + data.message);
+});
+
+socket.on("counter", function(data) {
+  $("#counter").text(data.count);
+});
+
+socket.on("user_join", function(data) {
+  addMessage(data + " just joined the chat!");
+});
+
+socket.on("user_leave", function(data) {
+  addMessage(data + " has left the chat.");
+});
+
+addMessage("You have joined the chat as '" + username + "'.");
+socket.emit("user_join", username);
+
+function addMessage(message) {
+  var li = document.createElement("li");
+  li.innerHTML = message;
+  messages.appendChild(li);
+  window.scrollTo(0, document.body.scrollHeight);
+}
