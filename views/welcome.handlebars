@@ -2,7 +2,9 @@
 <div style="position: fixed; z-index: 2; width: 100%; top: 0; background-color:#016FB9;">
   <h1>Welcome to WhatsChat, <span id="user">{{user}}</span></h1>
   <h5>Users connected : <span id="counter"></span></h5>
-  <button type="submit" id="logout"><a href="/logout">Logout</button></a><br><br>
+  <button type="submit" id="logout"><a href="/logout"><span id="logout_text">Logout</span></button></a>
+  
+  <br><br>
 </div>
 <div style="margin-top: 110px;;">
   <ul class="messages" style="list-style-type:none"></ul>
@@ -58,11 +60,11 @@
   }
 
   .messages li:nth-child(odd) {
-    background: #ffc79a;
+    background: #ffd9ba;
   }
 
   .messages li:nth-child(even) {
-    background: #f19953;
+    background: #ffeedf;
   }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
@@ -114,3 +116,25 @@
     window.scrollTo(0, document.body.scrollHeight);
   }
 </script>
+
+<script type="text/javascript">
+{{!-- auto logout after 15 minutes (900000 seconds) --}}
+function idleTimer() {
+    var t;
+    window.onmousemove = resetTimer; 
+    window.onclick = resetTimer;     
+    window.onscroll = resetTimer;    
+    window.onkeypress = resetTimer;  
+
+    function logout() {
+        window.location.href = "/logout";  
+    }
+
+   function resetTimer() {
+        clearTimeout(t);
+        t = setTimeout(logout, 900000); 
+    }
+}
+idleTimer();
+</script>
+
