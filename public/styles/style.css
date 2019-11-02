@@ -202,17 +202,17 @@ a:hover {
     box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.4);
   }
 
-  #my-border {
+  .my-border {
     border: 2px solid #eeeeee;
   }
 
 
   #text-fader{
-    -webkit-animation: color-change 4s infinite;
-    -moz-animation: color-change 4s infinite;
-    -o-animation: color-change 4s infinite;
-    -ms-animation: color-change 4s infinite;
-    animation: color-change 4s infinite;
+    -webkit-animation: color-change 5s infinite;
+    -moz-animation: color-change 5s infinite;
+    -o-animation: color-change 5s infinite;
+    -ms-animation: color-change 5s infinite;
+    animation: color-change 5s infinite;
 }
 
 @-webkit-keyframes color-change {
