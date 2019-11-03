@@ -1,5 +1,6 @@
 var $signUp = $("#createuser");
 var $logIn = $("#loginuser");
+var $changeName = $("#changeName");
 
 //signup API
 
@@ -9,7 +10,8 @@ $signUp.on("submit", function(event) {
   var newUser = {
     userName: $("#createuser [name=name]")
       .val()
-      .trim(),
+      .trim()
+      .toUpperCase(),
     password: $("#createuser [name=psw]")
       .val()
       .trim()
@@ -74,6 +76,26 @@ $logIn.on("submit", function(event) {
       };
       res.status(500).json(err);
     });
+});
+
+//changes username
+$changeName.on("submit", function(event) {
+  event.preventDefault();
+  var User = {
+    userName: $("#changeName [name = name]")
+      .val()
+      .trim()
+      .toUpperCase(),
+    newName: $("#changeName [name = newName]")
+      .val()
+      .trim()
+      .toUpperCase()
+  };
+  $.ajax({
+    method: "PUT",
+    url: "/api/signup",
+    data: User
+  }).then((window.location.href = "/"));
 });
 
 //{{!-- auto logout after 15 minutes (900000 seconds) --}}
