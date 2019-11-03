@@ -117,12 +117,22 @@ function idleTimer() {
 }
 idleTimer();
 
+// avoiding the < and > sign
+document.getElementById("winput").onkeypress = function(e) {
+  var chr = String.fromCharCode(e.which);
+  if ("></'".indexOf(chr) >= 0) {
+    return false;
+  }
+};
+
 // Code for socket IO to make chat app live.
 
 var form = document.querySelector("form");
 var input = document.querySelector(".input");
 var messages = document.querySelector(".messages");
+var message = document.getElementById("winput");
 var username = $("#user").text();
+var typing = document.getElementById("typing");
 var socket = io();
 
 form.addEventListener(
@@ -130,7 +140,7 @@ form.addEventListener(
   function(event) {
     event.preventDefault();
 
-    addMessage(username + ": " + input.value);
+    addMessage(username.bold() + ": " + input.value);
 
     socket.emit("chat_message", {
       message: input.value
@@ -143,7 +153,19 @@ form.addEventListener(
 );
 
 socket.on("chat_message", function(data) {
-  addMessage(data.username + ": " + data.message);
+  addMessage(data.username.bold() + ": " + data.message);
+  typing.innerHTML = "";
+});
+
+// emit a “typing” event when we start typing
+message.addEventListener("keypress", function() {
+  socket.emit("typing", username);
+});
+
+// when we receive a typing event, show that a user is typing
+socket.on("typing", function(data) {
+  console.log("this is typing");
+  typing.innerHTML = "<em>" + data + " is typing</em>";
 });
 
 socket.on("counter", function(data) {
@@ -151,14 +173,14 @@ socket.on("counter", function(data) {
 });
 
 socket.on("user_join", function(data) {
-  addMessage(data + " just joined the chat!");
+  addMessage(data.bold() + " just joined the chat!");
 });
 
 socket.on("user_leave", function(data) {
-  addMessage(data + " has left the chat.");
+  addMessage(data.bold() + " has left the chat.");
 });
 
-addMessage("You have joined the chat as '" + username + "'.");
+addMessage("You have joined the chat as " + username.bold() + ".");
 socket.emit("user_join", username);
 
 function addMessage(message) {

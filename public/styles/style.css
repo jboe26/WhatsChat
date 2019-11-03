@@ -15,9 +15,8 @@
 #form, #card, .card {
     background-color: #004777;
     color: white;
-    height: 300px;
+    /* height: 300px; */
     font-family: 'PT Sans', sans-serif;
-    
 }
 
 .chan-link {
@@ -144,6 +143,9 @@ a:hover {
     text-decoration: none;
 }
 
+#login_logo {
+    max-width: 80%;
+}
 #wh1 {
     position: fixed;
     z-index: 2;
@@ -207,3 +209,46 @@ a:hover {
   .messages li:nth-child(even) {
     background: #ffeedf;
   }
+
+  #my-shadow {
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .my-border {
+    border: 2px solid #eeeeee;
+  }
+
+
+  #text-fader{
+    -webkit-animation: color-change 5s infinite;
+    -moz-animation: color-change 5s infinite;
+    -o-animation: color-change 5s infinite;
+    -ms-animation: color-change 5s infinite;
+    animation: color-change 5s infinite;
+}
+
+@-webkit-keyframes color-change {
+    0% { color: #cccccc; }
+    50% { color: #016fb9; }
+    100% { color: #cccccc; }
+}
+@-moz-keyframes color-change {
+    0% { color: #cccccc; }
+    50% { color: #016fb9; }
+    100% { color: #cccccc; }
+}
+@-ms-keyframes color-change {
+    0% { color: #cccccc; }
+    50% { color: #016fb9; }
+    100% { color: #cccccc; }
+}
+@-o-keyframes color-change {
+    0% { color: #cccccc; }
+    50% { color: #016fb9; }
+    100% { color: #cccccc; }
+}
+@keyframes color-change {
+    0% { color: #cccccc; }
+    50% { color: #016fb9; }
+    100% { color: #cccccc; }
+}
