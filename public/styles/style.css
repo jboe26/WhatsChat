@@ -37,6 +37,17 @@
     text-decoration: none;
 }
 
+#settings {
+    background-color: #004777;
+    width: 6rem;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
 #logout:hover {
     background-color: #e27720;
     color: white;
@@ -187,6 +198,7 @@ a:hover {
   }
 
   .messages li {
+    overflow-wrap: break-word;
     padding: 0.5rem;
   }
 

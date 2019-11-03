@@ -65,97 +65,22 @@ module.exports = function(app) {
       });
     }
   });
-  // app.post("/api/typer/:key", function(req, res) {
-  //   db.User.findOne({
-  //     where: {
-  //       key: req.params.key
-  //     }
-  //   }).then(function(results) {
-  //     db.Message.create({
-  //       user: results.userName,
-  //       message: req.body.message
-  //     }).then(function(results) {
-  //       res.send(results.user);
-  //     });
-  //   });
-  // });
-
-  // app.post("/api/login", function(req, res) {
-  //   db.User.findOne({
-  //     where: {
-  //       userName: req.body.userName,
-  //       password: req.body.password
-  //     }
-  //   }).then(function(results) {
-  //     if (results) {
-  //       //console.log(results.createdAt);
-  //       res.send(results.key.toString());
-  //     } else {
-  //       res.send(false);
-  //     }
-  //   });
-  // });
-
-  // Get all channels
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
-
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.json(dbExample);
-    });
-  });
-
-  //Get all posts in the channel
-  app.get("/api/channels/:id", function(req, res) {
-    // 2; Add a join to include all of the Author's Posts here
-    db.channels
-      .findOne(
-        { include: [db.chats] },
-        {
-          where: {
-            id: req.params.id
-          }
+  //route for changing the username
+  app.put("/api/signup", function(req, res) {
+    console.log("request: " + req);
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.User.update(
+      {
+        userName: req.body.newName
+      },
+      {
+        where: {
+          userName: req.body.userName
         }
-      )
-      .then(function(results) {
-        res.json(results);
-      });
-  });
-
-  // Create a new channel
-  app.post("/api/channels", function(req, res) {
-    db.Example.create(req.body).then(function(dbChannels) {
-      res.json(dbChannels);
-    });
-  });
-
-  // Create a new post
-  app.post("/api/chats", function(req, res) {
-    db.Example.create(req.body).then(function(dbChannels) {
-      res.json(dbChannels);
-    });
-  });
-
-  // Delete a channel by id
-  app.delete("/api/channels/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbChannels
-    ) {
-      res.json(dbChannels);
+      }
+    ).then(function() {
+      res.render("welcome", { user: req.user.userName });
     });
   });
 };

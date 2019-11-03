@@ -3,6 +3,13 @@
   <h1>Welcome to WhatsChat, <span id="user">{{user}}</span></h1>
   <h5>Users connected : <span id="counter"></span> <span id="typing"></span></h5>
   <button type="submit" id="logout"><a href="/logout"><span id="logout_text">Logout</span></button></a>
+
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary settings" data-toggle="modal" data-target="#exampleModalCenter">
+  settings
+</button>
+
+  <br><br>
 </div>
 <div style="margin-top: 150px;">
   <ul class="messages" style="list-style-type:none"></ul>
@@ -11,8 +18,35 @@
   <input type="text" class="input" id="winput" autocomplete="off" autofocus required />
   <button id="wbutton">Send</button>
 </form>
-<style>
-  
-</style>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Settings</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    
+          <form id="changeName">
+        <label for="newName"><b>Change your username permanently?</b></label>
+        <br>
+        <input type="text" placeholder="Ex: PERSON33" name="newName">
+        <input type="hidden" value="{{user}}" name="name">
+        <br><br>
+         <p>Warning: you will be logged out after making changes, do not forget your info. Username will be converted to all caps</p>
+      </div>
+      <div class="modal-footer">
+          <input type="submit" class="btn btn-primary"Save changes>
+          </form>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
