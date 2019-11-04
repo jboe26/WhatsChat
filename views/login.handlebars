@@ -4,7 +4,7 @@
             <div class="col-lg-8 col-sm-10">
                 <div class="card mt-4 my-border" id="my-shadow">
                     <div class="card-body" id="form">
-                        <img src="/images/whatsCHAT600.png" class="img-fluid" id="login_logo">
+                        <img src="/images/whatsCHAT600.png" class="img-fluid biglogo" id="login_logo">
                         <br><br>
                         <h5 class="card-title">Login to start chatting today!</h5>
                         <form id="loginuser">
@@ -34,4 +34,17 @@
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript">
+
+            $(".biglogo").on("mouseenter", function () {
+                $(".biglogo").addClass("animated pulse");
+            });
+
+            $(".biglogo").on("mouseleave", function () {
+                $(".biglogo").removeClass("animated pulse");
+            });
+
+        </script>
+
 </body>

@@ -226,11 +226,11 @@ a:hover {
 
 
   #text-fader{
-    -webkit-animation: color-change 5s infinite;
-    -moz-animation: color-change 5s infinite;
-    -o-animation: color-change 5s infinite;
-    -ms-animation: color-change 5s infinite;
-    animation: color-change 5s infinite;
+    -webkit-animation: color-change 4s infinite;
+    -moz-animation: color-change 4s infinite;
+    -o-animation: color-change 4s infinite;
+    -ms-animation: color-change 4s infinite;
+    animation: color-change 4s infinite;
 }
 
 @-webkit-keyframes color-change {
