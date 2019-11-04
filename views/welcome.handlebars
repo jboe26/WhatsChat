@@ -1,15 +1,8 @@
-<!-- logo -->
-<!-- <div id="wh1">
-<img src="/images/whatsCHAT225.png" class="img-fluid" id="logo_small">
-<span class="welcome-text">Welcome, </span><span id="user">{{user}}</span>
-<h5>Users connected: <span id="counter"></span> <span id="typing"></span></h5>
-<button type="submit" style="float:right" id="logout"><a href="/logout"><span id="logout_text">Logout</span></button></a>
-</div> -->
 <header>
   <div class="container">
     <nav class="navbar fixed-top navbar-expand my-bg justify-content-between">
       <span class="navbar-brand">
-        <img src="/images/whatsCHAT225.png" class="navbar-brand" id="logo_small"><span id="connected-text">Welcome, <span
+        <img src="/images/whatsCHAT225.png" class="navbar-brand littlelogo" id="logo_small"><span id="connected-text">Welcome, <span
           id="user">{{user}}</span>!</span>
       </span>
       <div class="form-inline">
@@ -23,16 +16,6 @@
 </header>
 
 <div class="header-placeholder"></div>
-
-
-
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary settings" data-toggle="modal" data-target="#exampleModalCenter">
-  settings
-</button>
-  <br><br>
-</div> -->
-<!-- <img src="/images/whatsCHAT225.png" class="navbar-brand" id="logo_small">Welcome, {{user}}! -->
 
 {{!-- Messages section --}}
 <div class="container">
@@ -62,28 +45,6 @@
 </div>
 
 <div class="footer-placeholder"></div>
-
-{{!-- <footer class="container-fluid">
-  <nav class="navbar fixed-bottom">
-<h5>Users connected: <span id="counter"></span> <span id="typing"></span></h5>
-  
-  
-<form class="form-inline">
-  <input type="text" class="input" id="winput" autocomplete="off" autofocus required />
-  <button id="wbutton">Send</button>
-</form>
-</nav>
-</footer> --}}
-
-
-
-{{!-- <form id="wform">
-  <h5>Users connected: <span id="counter"></span> <span id="typing"></span></h5>
-  <input type="text" class="input" id="winput" autocomplete="off" autofocus required />
-  <button id="wbutton">Send</button>
-</form> --}}
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -118,3 +79,19 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+        $(".littlelogo").on("mouseenter", function() { 
+            $(".littlelogo").addClass("animated pulse") });
+        $(".littlelogo").on("mouseleave", function() { 
+            $(".littlelogo").removeClass("pulse") });
+
+        $(".littlelogo").on("click", function() { 
+            $(".littlelogo").addClass("animated flip");
+            setTimeout(function() {
+                $(".littlelogo").removeClass("animated flip");
+        }, 1000);  
+        });
+
+    </script>
