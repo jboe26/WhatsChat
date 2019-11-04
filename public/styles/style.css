@@ -55,12 +55,12 @@
 
 }
 #logout_text {
-    color: white;
+    color: #ffc107;
 }
 
 #logout_text:hover {
     text-decoration: none;    
-    color: white;
+    color: black;
 }
 
 .footer {
@@ -149,9 +149,14 @@ a:hover {
 #wh1 {
     position: fixed;
     z-index: 2;
+    height: 90px;
     width: 100%;
     top: 0;
-    background-color: #016FB9;
+    background-color: #004777;
+  }
+
+  #logo_small {
+      height: 60px;  
   }
 
   #wform {
@@ -169,7 +174,7 @@ a:hover {
   #winput {
     border: 0;
     padding: 0.5rem;
-    width: 100%;
+    width: 70%;
     outline: 0;
     margin-right: 0.5rem;
     border-radius: 0.25rem;
@@ -178,8 +183,8 @@ a:hover {
 
   #wbutton {
     width: 6rem;
-    background-color: #1b8c00;
-    color: white;
+    background-color: #f19953;
+    color: #004777;
     border: none;
     padding: 0.5rem;
     cursor: pointer;
@@ -188,7 +193,8 @@ a:hover {
   }
 
   #wbutton:hover {
-    background-color: #166d01;
+    background-color: #d16811;
+    color: white;
   }
 
   .messages {
@@ -226,11 +232,11 @@ a:hover {
 
 
   #text-fader{
-    -webkit-animation: color-change 5s infinite;
-    -moz-animation: color-change 5s infinite;
-    -o-animation: color-change 5s infinite;
-    -ms-animation: color-change 5s infinite;
-    animation: color-change 5s infinite;
+    -webkit-animation: color-change 4s infinite;
+    -moz-animation: color-change 4s infinite;
+    -o-animation: color-change 4s infinite;
+    -ms-animation: color-change 4s infinite;
+    animation: color-change 4s infinite;
 }
 
 @-webkit-keyframes color-change {
@@ -257,4 +263,33 @@ a:hover {
     0% { color: #cccccc; }
     50% { color: #016fb9; }
     100% { color: #cccccc; }
+}
+
+.header-placeholder {
+   height: 100px;
+   display: block; 
+}
+
+.footer-placeholder {
+    height: 3rem;
+
+}
+.my-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* display: flex; */
+    box-sizing: border-box;
+    padding: 0.25rem;
+    z-index: 2;
+    background-color: #004777;
+}
+
+#connected-text {
+    color: #cccccc;
+}
+
+.my-bg {
+    background: #004777
 }

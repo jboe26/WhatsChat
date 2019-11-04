@@ -1,26 +1,54 @@
-{{!-- logo --}}
-<div id="wh1">
-  <h1>Welcome to WhatsChat, <span id="user">{{user}}</span></h1>
-  <h5>Users connected : <span id="counter"></span> <span id="typing"></span></h5>
-  <button type="submit" id="logout"><a href="/logout"><span id="logout_text">Logout</span></button></a>
+<header>
+  <div class="container">
+    <nav class="navbar fixed-top navbar-expand my-bg justify-content-between">
+      <span class="navbar-brand">
+        <img src="/images/whatsCHAT225.png" class="navbar-brand littlelogo" id="logo_small"><span id="connected-text">Welcome, <span
+          id="user">{{user}}</span>!</span>
+      </span>
+      <div class="form-inline">
+        <button class="btn btn-outline-primary mr-2" type="submit" data-toggle="modal"
+          data-target="#exampleModalCenter">SETTINGS</button>
+        <button class="btn btn-outline-warning" type="submit"><a href="/logout"><span
+              id="logout_text">LOGOUT</span></a></button>
+      </div>
+    </nav>
+  </div>
+</header>
 
-  <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary settings" data-toggle="modal" data-target="#exampleModalCenter">
-  settings
-</button>
+<div class="header-placeholder"></div>
 
-  <br><br>
+{{!-- Messages section --}}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div style="margin-top: 0px;">
+        <ul class="messages" style="list-style-type:none"></ul>
+      </div>
+    </div>
+  </div>
 </div>
-<div style="margin-top: 150px;">
-  <ul class="messages" style="list-style-type:none"></ul>
+
+<div class="text-center my-footer">
+    <div class="row">
+      <div class="col-12">
+        <h5><span id="connected-text">Users connected: <span id="counter"></span> <span id="typing"></span></span></h5>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-12">
+          <form>
+            <input type="text" class="input" id="winput" autocomplete="off" autofocus required /><button
+              id="wbutton">Send</button>
+          </form>
+        </div>
+      </div>
 </div>
-<form id="wform">
-  <input type="text" class="input" id="winput" autocomplete="off" autofocus required />
-  <button id="wbutton">Send</button>
-</form>
+
+<div class="footer-placeholder"></div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -40,8 +68,8 @@
          <p class="warning">Warning: you will be logged out after making changes, do not forget your info. Username will be converted to all caps</p>
       </div>
       <div class="modal-footer">
-          <input type="submit" class="btn btn-primary"Save changes>
-          </form>
+        <input type="submit" class="btn btn-primary" Save changes>
+        </form>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -50,3 +78,19 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+        $(".littlelogo").on("mouseenter", function() { 
+            $(".littlelogo").addClass("animated pulse") });
+        $(".littlelogo").on("mouseleave", function() { 
+            $(".littlelogo").removeClass("pulse") });
+
+        $(".littlelogo").on("click", function() { 
+            $(".littlelogo").addClass("animated flip");
+            setTimeout(function() {
+                $(".littlelogo").removeClass("animated flip");
+        }, 1000);  
+        });
+
+    </script>

@@ -2,21 +2,18 @@
     <div class="container">
         <div class="row justify-content-sm-center">
             <div class="col-lg-8 col-sm-10">
-                {{!-- <div class="col-8 offset-2"> --}}
                 <div class="card mt-4 my-border" id="my-shadow">
-                    {{!-- <div class="card" id="my-border"> --}}
                     <div class="card-body" id="form">
-                        {{!-- <h4>Welcome to WhatsChat!</h4> --}}
-                        <img src="/images/whatsCHAT600.png" class="img-fluid" id="login_logo">
+                        <img src="/images/whatsCHAT600.png" class="img-fluid biglogo" id="login_logo">
                         <br><br>
                         <h5 class="card-title">Login to start chatting today!</h5>
                         <form id="loginuser">
 
                             <label for="name"><i class="fas fa-user"></i> <b>Username:</b></label>
-                            <input type="name" placeholder="John Doe" name="name" required>
+                            <input type="name" placeholder="Your Username" name="name" required>
                             <br>
                             <label for="psw"><i class="fas fa-lock"></i> <b>Password:</b></label>
-                            <input type="password" placeholder="123password" name="psw" required>
+                            <input type="password" placeholder="Your Password" name="psw" required>
                             <br>
                             <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in-alt"></i>
                                 Login</button>
@@ -35,12 +32,19 @@
 
                     <h4>{{msg}}</h4>
                 </div>
-
-
-
             </div>
         </div>
-    </div>
-    </div>
+
+        <script type="text/javascript">
+
+            $(".biglogo").on("mouseenter", function () {
+                $(".biglogo").addClass("animated pulse");
+            });
+
+            $(".biglogo").on("mouseleave", function () {
+                $(".biglogo").removeClass("animated pulse");
+            });
+
+        </script>
 
 </body>
