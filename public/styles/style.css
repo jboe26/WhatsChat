@@ -200,6 +200,8 @@ a:hover {
   .messages li {
     overflow-wrap: break-word;
     padding: 0.5rem;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
   .messages li:nth-child(odd) {
@@ -216,6 +218,10 @@ a:hover {
 
   .my-border {
     border: 2px solid #eeeeee;
+  }
+
+  .warning {
+      color: orangered;
   }
 
 

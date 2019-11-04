@@ -27,7 +27,9 @@ module.exports = function(app) {
   });
 
   app.get("/signup/failed", function(req, res) {
-    res.render("signup", { msg: "User already exists. Please try again!" });
+    res.render("signup", {
+      msg: "This username has been taken, please choose another"
+    });
   });
 
   app.get("/welcome", isAuthenticated, function(req, res) {
