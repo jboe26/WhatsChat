@@ -120,7 +120,7 @@ idleTimer();
 // avoiding the < and > sign
 document.getElementById("winput").onkeypress = function(e) {
   var chr = String.fromCharCode(e.which);
-  if ("></'".indexOf(chr) >= 0) {
+  if ("><".indexOf(chr) >= 0) {
     return false;
   }
 };
