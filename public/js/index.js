@@ -1,6 +1,7 @@
 var $signUp = $("#createuser");
 var $logIn = $("#loginuser");
 var $changeName = $("#changeName");
+var $changePsw = $("#changepsw");
 
 //signup API
 
@@ -96,6 +97,24 @@ $changeName.on("submit", function(event) {
   $.ajax({
     method: "PUT",
     url: "/api/signup",
+    data: User
+  }).then((window.location.href = "/"));
+});
+
+//changes password
+$changePsw.on("submit", function(event) {
+  event.preventDefault();
+  var User = {
+    password: $("#changepsw [name = psw]")
+      .val()
+      .trim(),
+    newpassword: $("#changepsw [name = newpsw]")
+      .val()
+      .trim()
+  };
+  $.ajax({
+    method: "PUT",
+    url: "/api/signup1",
     data: User
   }).then((window.location.href = "/"));
 });

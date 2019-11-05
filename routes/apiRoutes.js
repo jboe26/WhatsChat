@@ -1,5 +1,6 @@
 var db = require("../models");
 var passport = require("../config/passport");
+var bcrypt = require("bcryptjs");
 
 module.exports = function(app) {
   //this post request is using authentication process for user login.
@@ -80,6 +81,29 @@ module.exports = function(app) {
       {
         where: {
           userName: req.body.userName
+        }
+      }
+    ).then(function() {
+      res.render("welcome", { user: req.user.userName });
+    });
+  });
+
+  //route for changing the password
+  app.put("/api/signup1", function(req, res) {
+    console.log("request: " + req);
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.User.update(
+      {
+        password: bcrypt.hashSync(
+          req.body.newpassword,
+          bcrypt.genSaltSync(10),
+          null
+        )
+      },
+      {
+        where: {
+          password: req.body.password
         }
       }
     ).then(function() {

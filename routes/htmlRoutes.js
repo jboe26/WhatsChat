@@ -36,7 +36,10 @@ module.exports = function(app) {
 
   app.get("/welcome", isAuthenticated, function(req, res) {
     // console.log(req.user.userName);
-    res.render("welcome", { user: req.user.userName });
+    res.render("welcome", {
+      user: req.user.userName,
+      password: req.user.password
+    });
   });
 
   // Render 404 page for any unmatched routes
