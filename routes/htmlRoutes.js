@@ -2,6 +2,7 @@
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
+  //this will route the user to welcome page on successful login else route to login failed page.
   app.get("/", function(req, res) {
     if (req.user) {
       res.redirect("/welcome");
@@ -11,12 +12,14 @@ module.exports = function(app) {
     //res.render("login");
   });
 
+  //this is a route for login failed page with the message
   app.get("/login/failed", function(req, res) {
     res.render("login", {
       msg: "Invalid Username or Password. Please try again!"
     });
   });
 
+  //this will route the user to welcome page on successful signup else route to signup failed page.
   app.get("/signup", function(req, res) {
     if (req.user) {
       res.redirect("/welcome");
@@ -26,6 +29,7 @@ module.exports = function(app) {
     //res.render("signup");
   });
 
+  //this is a route for login failed page with the message.
   app.get("/signup/failed", function(req, res) {
     res.render("signup", { msg: "User already exists. Please try again!" });
   });

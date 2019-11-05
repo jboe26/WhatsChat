@@ -6,7 +6,7 @@ var $changeName = $("#changeName");
 
 $signUp.on("submit", function(event) {
   event.preventDefault();
-
+  // It takes the input from user for username and password and pass it to POST function.
   var newUser = {
     userName: $("#createuser [name=name]")
       .val()
@@ -22,7 +22,7 @@ $signUp.on("submit", function(event) {
     data: newUser
   })
     .then(function(results) {
-      // alert(results);
+      // if the user already exist in database it will route to signup failed page else it will log in user.
       if (results === "found") {
         window.location.href = "/signup/failed";
       } else {
@@ -46,6 +46,7 @@ $signUp.on("submit", function(event) {
 
 $logIn.on("submit", function(event) {
   event.preventDefault();
+  // It takes the input from user for username and password and pass it to POST function.
   var User = {
     userName: $("#loginuser [name=name]")
       .val()
@@ -59,6 +60,7 @@ $logIn.on("submit", function(event) {
     data: User
   })
     .then(function(results) {
+      // if the username or password is incorrect it will route to login failed page else it will log in user.
       if (results) {
         window.location.href = "/welcome";
       } else {
@@ -135,6 +137,7 @@ var username = $("#user").text();
 var typing = document.getElementById("typing");
 var socket = io();
 
+//this event will run after the user has typed a message and hit send button.
 form.addEventListener(
   "submit",
   function(event) {
@@ -152,6 +155,7 @@ form.addEventListener(
   false
 );
 
+//this will display the message sent and the username who sent it
 socket.on("chat_message", function(data) {
   addMessage(data.username.bold() + ": " + data.message);
   typing.innerHTML = "";
@@ -168,21 +172,26 @@ socket.on("typing", function(data) {
   typing.innerHTML = "<em>" + data + " is typing</em>";
 });
 
+//It will run a counter whenever user logs in to check how many users are currently online.
 socket.on("counter", function(data) {
   $("#counter").text(data.count);
 });
 
+//this will send a message in chat when someone joins the chat.
 socket.on("user_join", function(data) {
   addMessage(data.bold() + " just joined the chat!");
 });
 
+//this will send a message in chat when someone leaves the chat.
 socket.on("user_leave", function(data) {
   addMessage(data.bold() + " has left the chat.");
 });
 
+//this will send a message in chat when user joins the chat.
 addMessage("You have joined the chat as " + username.bold() + ".");
 socket.emit("user_join", username);
 
+//This function is appending all the messages to the chat.
 function addMessage(message) {
   var li = document.createElement("li");
   li.innerHTML = message;

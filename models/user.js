@@ -1,3 +1,5 @@
+//bcrypt is used as a NPM that encrypts the password in Database.
+
 var bcrypt = require("bcryptjs");
 
 module.exports = function(sequelize, DataTypes) {
