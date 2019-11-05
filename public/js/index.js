@@ -98,7 +98,13 @@ $changeName.on("submit", function(event) {
     method: "PUT",
     url: "/api/signup",
     data: User
-  }).then((window.location.href = "/"));
+  }).then(function(results) {
+    if (results === "found") {
+      $("#err").show();
+    } else {
+      window.location.href = "/";
+    }
+  });
 });
 
 //changes password
