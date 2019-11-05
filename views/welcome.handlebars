@@ -1,18 +1,27 @@
 <header>
   <div class="container">
-    <nav class="navbar fixed-top navbar-expand my-bg justify-content-between">
+    <nav class="navbar fixed-top navbar-expand-lg my-bg justify-content-between navbar-light">
       <span class="navbar-brand">
-        <img src="/images/whatsCHAT225.png" class="navbar-brand littlelogo" id="logo_small"><span id="connected-text">Welcome, <span
-          id="user">{{user}}</span>!</span>
+        <img src="/images/whatsCHAT225.png" class="navbar-brand littlelogo" id="logo_small"><span
+          id="connected-text">Welcome, <span id="user">{{user}}</span>!</span>
       </span>
-      <div class="form-inline">
-        <button class="btn btn-outline-primary mr-2" type="submit" data-toggle="modal"
-          data-target="#exampleModalCenter">CHANGE USERNAME</button>
-          <button class="btn btn-outline-primary mr-2" type="submit" data-toggle="modal"
-          data-target="#changepassword">CHANGE PASSWORD</button>
-        <button class="btn btn-outline-warning" type="submit"><a href="/logout"><span
-              id="logout_text">LOGOUT</span></a></button>
+      
+      <span>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><button class="btn btn-outline-primary mr-2" type="submit" data-toggle="modal"
+              data-target="#exampleModalCenter">CHANGE USERNAME</button></li>
+          <li class="nav-item"><button class="btn btn-outline-primary mr-2" type="submit" data-toggle="modal"
+              data-target="#changepassword">CHANGE PASSWORD</button></li>
+          <li class="nav-item"><button class="btn btn-outline-warning" type="submit"><a href="/logout"><span
+                  id="logout_text">LOGOUT</span></a></button></li>
+        </ul>
       </div>
+      </span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </nav>
   </div>
 </header>
@@ -31,19 +40,19 @@
 </div>
 
 <div class="text-center my-footer">
-    <div class="row">
-      <div class="col-12">
-        <h5><span id="connected-text">Users connected: <span id="counter"></span> <span id="typing"></span></span></h5>
-      </div>
+  <div class="row">
+    <div class="col-12">
+      <h5><span id="connected-text">Users connected: <span id="counter"></span> <span id="typing"></span></span></h5>
     </div>
-      <div class="row">
-        <div class="col-12">
-          <form>
-            <input type="text" class="input" id="winput" autocomplete="off" autofocus required /><button
-              id="wbutton">Send</button>
-          </form>
-        </div>
-      </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form>
+        <input type="text" class="input" id="winput" autocomplete="off" autofocus required /><button
+          id="wbutton">Send</button>
+      </form>
+    </div>
+  </div>
 </div>
 
 <div class="footer-placeholder"></div>
@@ -116,16 +125,18 @@
 
 <script type="text/javascript">
 
-        $(".littlelogo").on("mouseenter", function() { 
-            $(".littlelogo").addClass("animated pulse") });
-        $(".littlelogo").on("mouseleave", function() { 
-            $(".littlelogo").removeClass("pulse") });
+  $(".littlelogo").on("mouseenter", function () {
+    $(".littlelogo").addClass("animated pulse")
+  });
+  $(".littlelogo").on("mouseleave", function () {
+    $(".littlelogo").removeClass("pulse")
+  });
 
-        $(".littlelogo").on("click", function() { 
-            $(".littlelogo").addClass("animated flip");
-            setTimeout(function() {
-                $(".littlelogo").removeClass("animated flip");
-        }, 1000);  
-        });
+  $(".littlelogo").on("click", function () {
+    $(".littlelogo").addClass("animated flip");
+    setTimeout(function () {
+      $(".littlelogo").removeClass("animated flip");
+    }, 1000);
+  });
 
-    </script>
+</script>
