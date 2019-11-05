@@ -74,17 +74,30 @@ module.exports = function(app) {
     console.log("request: " + req);
     // Update takes in an object describing the properties we want to update, and
     // we use where to describe which objects we want to update
-    db.User.update(
-      {
+    db.User.findOne({
+      where: {
         userName: req.body.newName
-      },
-      {
-        where: {
-          userName: req.body.userName
-        }
       }
-    ).then(function() {
-      res.render("welcome", { user: req.user.userName });
+    }).then(function(results) {
+      if (results) {
+        //  console.log("User ID or Email already exist");
+        //$("#err").show();
+        // location.reload();
+        res.send("found");
+      } else {
+        db.User.update(
+          {
+            userName: req.body.newName
+          },
+          {
+            where: {
+              userName: req.body.userName
+            }
+          }
+        ).then(function() {
+          res.render("welcome", { user: req.user.userName });
+        });
+      }
     });
   });
 
