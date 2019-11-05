@@ -2,6 +2,7 @@ var db = require("../models");
 var passport = require("../config/passport");
 
 module.exports = function(app) {
+  //this post request is using authentication process for user login.
   app.post(
     "/api/login",
     passport.authenticate("local", {
@@ -37,16 +38,18 @@ module.exports = function(app) {
       }
     });
   });
-  // Route for logging user out
+  // Route for logging user out.
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
   });
 
+  //Route for main page of website.
   app.get("/", function(req, res) {
     res.render("login");
   });
 
+  //Route for signup page.
   app.get("/signup", function(req, res) {
     res.render("signup");
   });
