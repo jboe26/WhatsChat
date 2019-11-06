@@ -197,10 +197,15 @@ a:hover {
     color: white;
   }
 
+  .messagesDiv {
+    margin-top: 0px;
+  }
+  
   .messages {
     margin: 0;
     padding: 0;
     margin-bottom: 3rem;
+    list-style-type:none;
   }
 
   .messages li {
@@ -216,6 +221,11 @@ a:hover {
 
   .messages li:nth-child(even) {
     background: #ffeedf;
+  }
+
+  .userErr {
+    display: none; 
+    color: red;
   }
 
   #my-shadow {
