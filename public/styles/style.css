@@ -197,15 +197,22 @@ a:hover {
     color: white;
   }
 
+  .messagesDiv {
+    margin-top: 0px;
+  }
+  
   .messages {
     margin: 0;
     padding: 0;
     margin-bottom: 3rem;
+    list-style-type:none;
   }
 
   .messages li {
     overflow-wrap: break-word;
     padding: 0.5rem;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
   .messages li:nth-child(odd) {
@@ -216,12 +223,21 @@ a:hover {
     background: #ffeedf;
   }
 
+  .userErr {
+    display: none; 
+    color: red;
+  }
+
   #my-shadow {
     box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.4);
   }
 
   .my-border {
     border: 2px solid #eeeeee;
+  }
+
+  .warning {
+      color: orangered;
   }
 
 

@@ -37,6 +37,10 @@
 
         <script type="text/javascript">
 
+        $(".biglogo").on("load", function () {
+                $(".biglogo").addClass("animated zoomIN");
+            });
+
             $(".biglogo").on("mouseenter", function () {
                 $(".biglogo").addClass("animated pulse");
             });

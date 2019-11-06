@@ -8,7 +8,7 @@ module.exports = function(app) {
     "/api/login",
     passport.authenticate("local", {
       successRedirect: "/welcome",
-      failureRedirect: "/login/failed"
+      failureRedirect: "/"
     }),
     function(req, res) {
       res.json(req.user);

@@ -32,8 +32,8 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div style="margin-top: 0px;">
-        <ul class="messages" style="list-style-type:none"></ul>
+      <div class="messagesDiv">
+        <ul class="messages"></ul>
       </div>
     </div>
   </div>
@@ -75,9 +75,9 @@
           <br>
           <input type="text" placeholder="Ex: PERSON33" name="newName" pattern="[A-Za-z0-9]{1,}">
           <input type="hidden" value="{{user}}" name="name">
-          <p id="err" style="display: none; color: red;">User Id already exist, try different ID</p>
+          <p id="err" class="userErr">User Id already exist, try different ID</p>
           <br><br>
-          <p>Warning: You will be logged out after making changes, DO NOT forget your info. Username will be converted
+          <p class="warning">Warning: You will be logged out after making changes, DO NOT forget your info. Username will be converted
             to all caps</p>
       </div>
       <div class="modal-footer">
@@ -106,10 +106,10 @@
         <form id="changepsw">
           <label for="newpsw"><b>Change your password permanently?</b></label>
           <br>
-          <input type="password" placeholder="Ex: PERSON33" name="newpsw" pattern=".{4,}">
+          <input type="password" placeholder="Ex: s10PpYj0e$" name="newpsw" pattern=".{4,}">
           <input type="hidden" value="{{password}}" name="psw">
           <br><br>
-          <p>Warning: You will be logged out after making changes, DO NOT forget your info.</p>
+          <p class="warning">Warning: You will be logged out after making changes, DO NOT forget your info.</p>
       </div>
       <div class="modal-footer">
         <input type="submit" class="btn btn-primary" Save changes>
